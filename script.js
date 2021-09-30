@@ -17,6 +17,10 @@ var spelStatus = SPELEN;
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
 
+var KEY_LEFT  = 37; // linker pijltje
+var KEY_RIGHT = 39; // rechter pijltje
+
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -56,7 +60,7 @@ var tekenAlles = function () {
   // kogel
 
   // speler
-  fill("white");
+  fill("grey");
   rect(spelerX - 25, spelerY - 25, 50, 50);
   fill("black");
   ellipse(spelerX, spelerY, 10, 10);
@@ -87,7 +91,7 @@ function setup() {
   createCanvas(1280, 720);
 
   // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('blue');
+  background('darkblue');
 }
 
 /**
@@ -109,3 +113,5 @@ function draw() {
 
   }
 }
+
+
