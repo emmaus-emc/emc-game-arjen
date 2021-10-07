@@ -19,7 +19,8 @@ var spelerY = 600; // y-positie van speler
 
 var KEY_LEFT  = 37; // linker pijltje
 var KEY_RIGHT = 39; // rechter pijltje
-
+var KEY_UP    = 38  // pijltje omhoog
+var KEY_DOWN  = 40  // pijltje omlaag
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -104,6 +105,7 @@ function draw() {
     beweegAlles();
     verwerkBotsing();
     tekenAlles();
+    beweegSpeler();
     if (checkGameOver()) {
       spelStatus = GAMEOVER;
     }
@@ -113,5 +115,24 @@ function draw() {
 
   }
 }
+
+var beweegSpeler = function() {
+  if (keyIsDown(KEY_LEFT)) {
+    spelerX = spelerX - 10;
+  }
+  if (keyIsDown(KEY_RIGHT)) {
+    spelerX = spelerX + 10;
+  }
+if (keyIsDown(KEY_UP)) {
+    spelerY = spelerY - 10;
+  }
+  if (keyIsDown(KEY_DOWN)) {
+    spelerY = spelerY + 10;
+  }
+};
+
+
+
+
 
 
