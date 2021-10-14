@@ -16,6 +16,8 @@ var spelStatus = SPELEN;
 
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
+var vijandX = 600  // x-positie van de vijand
+var vijandY = 200  // y-positie van de vijand
 
 var KEY_LEFT  = 37; // linker pijltje
 var KEY_RIGHT = 39; // rechter pijltje
@@ -31,7 +33,11 @@ var KEY_DOWN  = 40; // pijltje omlaag
  */
 var beweegAlles = function () {
   // vijand
+vijandY = vijandY + 100
 
+if (vijandY > 721) {
+  vijandY = 0;
+}
   // kogel
 
   // speler
@@ -66,12 +72,15 @@ var verwerkBotsing = function () {
  * Tekent spelscherm
  */
 var tekenAlles = function () {
- fill ("darkorange");
+ fill ("darkblue");
  rect(0,0,1280,720)
   // achtergrond
 
   // vijand
-
+  fill("red");
+  rect(vijandX - 25, vijandY - 25, 50, 50);
+  fill("black");
+  ellipse(vijandX, vijandY, 10, 10);
   // kogel
 
   // speler
