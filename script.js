@@ -33,7 +33,7 @@ var KEY_DOWN  = 40; // pijltje omlaag
  */
 var beweegAlles = function () {
   // vijand
-vijandY = vijandY + 100
+vijandY = vijandY + 1
 
 if (vijandY > 721) {
   vijandY = 0;
@@ -53,6 +53,21 @@ if (keyIsDown(KEY_UP)) {
   if (keyIsDown(KEY_DOWN)) {
     spelerY = spelerY + 20;
   }
+if (spelerX < 0){
+  spelerX=0;
+}
+if (spelerX > 1280){
+  spelerX=1280;
+}
+if (spelerY > 720){
+  spelerY=720;
+}
+if (spelerY < 0){
+  spelerY=0;
+}
+
+
+
 };
 
 
@@ -64,6 +79,18 @@ if (keyIsDown(KEY_UP)) {
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
 
+if(
+   (vijandX - spelerX) < 50 &&
+   (vijandX - spelerX) > -50 &&
+   (vijandY - spelerY) < 50 &&
+   (vijandY - spelerY) > -50
+  )
+{console.log("botsing")
+}
+
+
+
+
   // botsing kogel tegen vijand
 
 };
@@ -72,12 +99,12 @@ var verwerkBotsing = function () {
  * Tekent spelscherm
  */
 var tekenAlles = function () {
- fill ("darkblue");
+ fill ("black");
  rect(0,0,1280,720)
   // achtergrond
 
   // vijand
-  fill("red");
+  fill("yellow");
   rect(vijandX - 25, vijandY - 25, 50, 50);
   fill("black");
   ellipse(vijandX, vijandY, 10, 10);
