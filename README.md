@@ -24,18 +24,18 @@ Optioneel: extra onderdelen, je kunt die overslaan<br>
         - Gebruik variabalen spelerX en spelerY als middelpunt van de speler
 - [x] 3. beweeg speler met pijltjetoetsen
         - Gebruik de functie keyIsDown() om te kijken welke toets is ingedrukt
-- [ ] 4. beperk beweging tot schermranden
-- [ ] 5. tekenVijand
+- [x] 4. beperk beweging tot schermranden
+- [x] 5. tekenVijand
         - De afmeting van de vijand is 50x50 pixels
         - Gebruik twee variabelen vijandX en vijandY die het midden van de vijand aanwijzen
-- [ ] 6. beweegVijand vallend
-- [ ] 7. zet vijand bovenaan als gevallen
+- [x] 6. beweegVijand vallend
+- [x] 7. zet vijand bovenaan als gevallen
     De afmeting van het scherm vind je in de setup() functie
-- [ ] 8. console-bericht bij botsing speler-vijand
+- [x] 8. console-bericht bij botsing speler-vijand
     Gebruikt console.log om iets op de console te schrijven
-- [ ] 9. toon HP, elke botsing is lagere HP
-- [ ] 10. toon punten, elke seconde 1 punt erbij
-- [ ] 11. game over scherm met punten als HP op is
+- [x] 9. toon HP, elke botsing is lagere HP
+- [x] 10. toon punten, elke seconde 1 punt erbij
+- [x] 11. game over scherm met punten als HP op is
 - [ ] 12. optioneel: intro scherm met speluitleg, enter is start
 - [ ] 13. maak 3 vijanden op een rij
         - Kopieer de code die de vijanden beweegt en tekent

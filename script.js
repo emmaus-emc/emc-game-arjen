@@ -16,13 +16,26 @@ var spelStatus = SPELEN;
 
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
-var vijandX = 600  // x-positie van de vijand
-var vijandY = 200  // y-positie van de vijand
+var vijandX = 600; // x-positie van de vijand
+var vijandY = 200; // y-positie van de vijand
+var vijandX1 = 1000; // x-positie van de vijand
+var vijandY1 = 200; // y-positie van de vijand
+var vijandX2 = 800; // x-positie van de vijand
+var vijandY2 = 200; // y-positie van de vijand
+
+
+
+var spelerHealth = 75; //  health speler
+var punten = 0; 
+
+
 
 var KEY_LEFT  = 37; // linker pijltje
 var KEY_RIGHT = 39; // rechter pijltje
 var KEY_UP    = 38; // pijltje omhoog
 var KEY_DOWN  = 40; // pijltje omlaag
+
+
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -38,6 +51,20 @@ vijandY = vijandY + 1
 if (vijandY > 721) {
   vijandY = 0;
 }
+
+vijandY1 = vijandY1 + 1
+
+if (vijandY1 > 721) {
+  vijandY1 = 0;
+}
+
+vijandY2 = vijandY2+ 1
+
+if (vijandY2 > 721) {
+  vijandY2 = 0;
+}
+
+
   // kogel
 
   // speler
@@ -86,6 +113,7 @@ if(
    (vijandY - spelerY) > -50
   )
 {console.log("botsing")
+{spelerHealth = spelerHealth - 1}
 }
 
 
@@ -104,10 +132,13 @@ var tekenAlles = function () {
   // achtergrond
 
   // vijand
-  fill("yellow");
-  rect(vijandX - 25, vijandY - 25, 50, 50);
-  fill("black");
-  ellipse(vijandX, vijandY, 10, 10);
+  for (var i=0; i<3; i=i+1) {
+    fill("yellow");
+    rect(vijandX +i*200 - 25, vijandY - 25, 50, 50);
+    fill("black");
+    ellipse(vijandX, vijandY, 10, 10);
+  }
+
   // kogel
 
   // speler
@@ -117,6 +148,14 @@ var tekenAlles = function () {
   ellipse(spelerX, spelerY, 10, 10);
 
   // punten en health
+  fill ("white");
+  textSize(35);
+  text("HP = " + spelerHealth , 100 , 100 );
+
+fill ("white");
+  textSize(35);
+  text("punten = " + punten , 1000 , 100 );
+
 
 };
 
@@ -125,6 +164,11 @@ var tekenAlles = function () {
  * anders return false
  */
 var checkGameOver = function () {
+  if (spelerHealth < 1){
+    return true;
+  } else {
+    punten = punten + 1;
+  }
   return false;
 };
 
@@ -161,7 +205,9 @@ function draw() {
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
-
+fill ("Orange");
+  textSize(30);
+  text("Game over reload de browser om opnieuw te starten" , 300 , 200 );
   }
 }
 
