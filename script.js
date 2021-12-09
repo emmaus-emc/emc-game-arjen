@@ -16,25 +16,20 @@ var spelStatus = SPELEN;
 
 var spelerX = 600; // x-positie van speler
 var spelerY = 600; // y-positie van speler
-var vijandX = 600; // x-positie van de vijand
+var vijandX = 100; // x-positie van de vijand
 var vijandY = 200; // y-positie van de vijand
-var vijandX1 = 1000; // x-positie van de vijand
-var vijandY1 = 200; // y-positie van de vijand
-var vijandX2 = 800; // x-positie van de vijand
-var vijandY2 = 200; // y-positie van de vijand
 
 
 
 var spelerHealth = 75; //  health speler
-var punten = 0; 
+var punten = 0;
 
 
 
-var KEY_LEFT  = 37; // linker pijltje
+var KEY_LEFT = 37; // linker pijltje
 var KEY_RIGHT = 39; // rechter pijltje
-var KEY_UP    = 38; // pijltje omhoog
-var KEY_DOWN  = 40; // pijltje omlaag
-
+var KEY_UP = 38; // pijltje omhoog
+var KEY_DOWN = 40; // pijltje omlaag
 
 
 /* ********************************************* */
@@ -46,52 +41,41 @@ var KEY_DOWN  = 40; // pijltje omlaag
  */
 var beweegAlles = function () {
   // vijand
-vijandY = vijandY + 1
+  vijandY = vijandY + 1
 
-if (vijandY > 721) {
-  vijandY = 0;
-}
+  if (vijandY > 721) {
+    vijandY = 0;
+  }
 
-vijandY1 = vijandY1 + 1
-
-if (vijandY1 > 721) {
-  vijandY1 = 0;
-}
-
-vijandY2 = vijandY2+ 1
-
-if (vijandY2 > 721) {
-  vijandY2 = 0;
-}
-
+ 
 
   // kogel
 
   // speler
-if (keyIsDown(KEY_LEFT)) {
+  if (keyIsDown(KEY_LEFT)) {
     spelerX = spelerX - 20;
   }
   if (keyIsDown(KEY_RIGHT)) {
     spelerX = spelerX + 20;
   }
-if (keyIsDown(KEY_UP)) {
+  if (keyIsDown(KEY_UP)) {
     spelerY = spelerY - 20;
   }
   if (keyIsDown(KEY_DOWN)) {
     spelerY = spelerY + 20;
   }
-if (spelerX < 0){
-  spelerX=0;
-}
-if (spelerX > 1280){
-  spelerX=1280;
-}
-if (spelerY > 720){
-  spelerY=720;
-}
-if (spelerY < 0){
-  spelerY=0;
-}
+  if (spelerX < 0) {
+    spelerX = 0;
+  }
+  if (spelerX > 1280) {
+    spelerX = 1280;
+  }
+  if (spelerY > 720) {
+    spelerY = 720;
+  }
+  if (spelerY < 0) {
+    spelerY = 0;
+  }
 
 
 
@@ -106,15 +90,16 @@ if (spelerY < 0){
 var verwerkBotsing = function () {
   // botsing speler tegen vijand
 
-if(
-   (vijandX - spelerX) < 50 &&
-   (vijandX - spelerX) > -50 &&
-   (vijandY - spelerY) < 50 &&
-   (vijandY - spelerY) > -50
-  )
-{console.log("botsing")
-{spelerHealth = spelerHealth - 1}
-}
+for (let i = 0; i < 8; i++)
+  if (
+    (vijandX + i * 200 - spelerX) < 50 &&
+    (vijandX + i * 200 - spelerX) > -50 &&
+    (vijandY - spelerY) < 50 &&
+    (vijandY - spelerY) > -50
+  ) {
+    console.log("botsing");
+    spelerHealth = spelerHealth - 1;
+  }
 
 
 
@@ -127,14 +112,14 @@ if(
  * Tekent spelscherm
  */
 var tekenAlles = function () {
- fill ("black");
- rect(0,0,1280,720)
+  fill("black");
+  rect(0, 0, 1280, 720)
   // achtergrond
 
   // vijand
-  for (var i=0; i<3; i=i+1) {
+  for (var i = 0; i < 8; i = i + 1) {
     fill("yellow");
-    rect(vijandX +i*200 - 25, vijandY - 25, 50, 50);
+    rect(vijandX + i * 150 - 25, vijandY - 25, 50, 50);
     fill("black");
     ellipse(vijandX, vijandY, 10, 10);
   }
@@ -148,13 +133,13 @@ var tekenAlles = function () {
   ellipse(spelerX, spelerY, 10, 10);
 
   // punten en health
-  fill ("white");
+  fill("white");
   textSize(35);
-  text("HP = " + spelerHealth , 100 , 100 );
+  text("HP = " + spelerHealth, 100, 100);
 
-fill ("white");
+  fill("white");
   textSize(35);
-  text("punten = " + punten , 1000 , 100 );
+  text("punten = " + punten, 1000, 100);
 
 
 };
@@ -164,7 +149,7 @@ fill ("white");
  * anders return false
  */
 var checkGameOver = function () {
-  if (spelerHealth < 1){
+  if (spelerHealth < 1) {
     return true;
   } else {
     punten = punten + 1;
@@ -205,9 +190,9 @@ function draw() {
   }
   if (spelStatus === GAMEOVER) {
     // teken game-over scherm
-fill ("Orange");
-  textSize(30);
-  text("Game over reload de browser om opnieuw te starten" , 300 , 200 );
+    fill("Orange");
+    textSize(30);
+    text("Game over reload de browser om opnieuw te starten", 300, 200);
   }
 }
 
